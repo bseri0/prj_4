@@ -48,4 +48,16 @@ YEAR	FIPS	customers_out	month	storm_intensity
 997971	2014	36083201411	193	11	7
 498201	2014	8031201411	3	11	7
 453388	2014	6029201412	64	12	5
+
+
 With multilinear regression, we can see that there is room for improvement on our data and analysis attempts for predicting customers out. If we included the additional data points stated above, my suspicion is this model would be more accurate. Currently, with our 5 "x" independent variables, we're receiving approximate 17% explanation in the variance of the dataset based on this r^2 value. More data to sample, and more variables would help increase the accuracy. However, it is still a very nuanced and complex analysis. Models that predict the weather attempt similar things, and we often see incorrect predictions from our weather reporters, even with their extensive tools and knowledge.
+
+A summary of our coefficients will explain the effect our x variables have on the result.. Firs 0.0000 indicates the "year" column is a non changing value and has no effect. This is correct as it is just the year 2014. If we incorporate more years of data, I'd be interested in seeing the effect year has on our results. With climate change, I'd expect the higher year values, to have higher effects on our predicted results...
+
+The FIPS score is a "coded" location based assessment and the coefficient o 9.6-10 indicates a number close to zero and negligible effect on our model. Perhaps we should narrow this down to REGION, or only run these models on a single region, excluding other natrual differences in climate through out the continental US.
+
+The month coefficeint.. indicates a negative relationship as months go up, outages decrease by approximately 260. This makes sense, as most outages occurr btween spring and fall.
+
+The storm intensity is also self explanatory, indicating the higher the intensity weighting, the numbers go up on avg 240 per intensity score.
+
+Lastly, the outage event boolean, suggests a strong positive relationship. Since 1 always equals an event, it will always have higher numbers, showing this result.
