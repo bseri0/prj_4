@@ -1,3 +1,12 @@
+Our complete end-to-end data pipeline and SDLC analysis on public utility outage and storm data to perform sampling and learning on past outage/storm events. 
+
+We sourced our data from Eagle - Eye Energy Outage, and NCEI Storm events. We used their APIs to perform an ETL process where we merged our data sets together by the FIPS code for state and county, then cleaned and prepped the data after importing it into our AWS S3 buckets. Once the data was prepped in our cloud hosted env, We connected to it to perform visualizations in PowerbI, and ran further analyses with AI regression models to see if it can be used to predict storm severity and # of customers out.
+
+
+
+Below is a summary of our analyses performed on a series of datasets we found on public web pages for electric utility outage data merged with weather events. 
+
+**Logistic regression on "Outage event" yes/no?:**
 Confusion Matrix Chart
 array([[36490,     0],
        [ 4421,     0]], dtype=int64)
@@ -23,8 +32,11 @@ Our first idea for this model was for attempting to predict the likeliness of # 
 Another limitatoin with this model type (logistic regression) is that it's best used to determine the likeliness of something to occur, true/false. We simplified our data points by labeling them "outage event" vs "non-outage event" to test it's feasibility. We believe this analysis would be MUCH more helpful if we had the extra data points mentioned above, and altered our model to run multi-linear regression. If we continued to use our Y variable for the amount of customers out, then used the X variables of storm intensity, month, outage event, and the extra data points mentioned previously, our model may become more accurate and useful to determine serverity and likliness.
 
 Let's try to run this data through a simple linear regression model to see how it performs on predicting customers out....
-................................................
 
+
+
+................................................
+**Multi-linear regression on "customers out" varibale to determine an estimate based on given independent variables:**
 # Fit the model using the training data
 linear_reg.fit(X_train, y_train)
 
